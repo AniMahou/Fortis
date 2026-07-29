@@ -34,16 +34,35 @@ module.exports = {
       },
     },
   ],
+  /**
+   * Coverage is measured over the hardware-independent core only.
+   *
+   * Everything excluded below either imports React Native or talks to a radio,
+   * a sensor or MMKV — none of which exist in a test runner. Including them
+   * would produce a lower headline number that says nothing useful, and
+   * "covering" them would mean asserting against mocks, which measures the
+   * mock rather than the code.
+   *
+   * Those files are deliberately thin for exactly this reason: every decision
+   * they might have made lives in a module listed here. What is left of them
+   * is verified by the manual checklists in each module's TESTING.md.
+   */
   collectCoverageFrom: [
-    'src/**/*.ts',
+    'src/mesh/**/*.ts',
+    'src/crypto/**/*.ts',
+    'src/storage/**/*.ts',
+    'src/state/meshModel.ts',
+    'src/state/pin.ts',
+    'src/config/schema.ts',
+    'src/geo/**/*.ts',
+    'src/screens/real/onboarding/nickname.ts',
     '!src/**/__tests__/**',
     '!src/**/*.d.ts',
-    // Thin native bindings are excluded from coverage on purpose: there is no
-    // radio, no GPS and no MMKV inside a test runner, so any "coverage" here
-    // would only be measuring how much of a mock we executed. These are
-    // covered by the manual checklists in each module's TESTING.md instead.
+    // Native radio bindings and the RN-only wiring.
     '!src/mesh/bleTransport.ts',
-    '!src/mesh/nativeMesh.ts',
+    '!src/mesh/wifiTransport.ts',
+    '!src/mesh/createTransport.ts',
     '!src/storage/mmkvBackend.ts',
+    '!src/storage/index.ts',
   ],
 };

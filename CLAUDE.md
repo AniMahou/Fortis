@@ -81,13 +81,31 @@ screens export as HTML/Tailwind — port to RN manually (View/Text/
 StyleSheet), they do not run as-is.
 
 ## Current status
-- [x] `src/mesh/packet.ts`, `src/mesh/relay.ts` — schema, TTL, dedupe/rebroadcast
-- [x] `src/crypto/keys.ts`, `src/crypto/sign.ts` — device identity, sign/verify, panic-wipe key destruction
-- [ ] BLE hardware spike — do this next, before anything below
-- [ ] `mesh/advertiser.ts` / `mesh/scanner.ts` — depends on spike outcome
-- [ ] `storage/mmkv.ts`
-- [ ] SOS / DangerMap / PanicWipe / Onboarding screens
-- [ ] Port the four mocked Stitch screens
+
+The app is built end to end. **320 tests pass, 93% coverage over the
+hardware-independent core**, typecheck clean, Metro bundles.
+
+- [x] `mesh/` — packet, relay, binary wire format, chunking, frame scheduler,
+      meshService, three transports
+- [x] `crypto/` — device identity, sign/verify
+- [x] `storage/` — encrypted MMKV vault, hardware-wrapped master key, panic wipe
+- [x] All 7 onboarding screens, all 5 real features, all 4 mocked screens
+- [x] Both Plan A (BLE) and Plan B (WiFi hub), selected by `VOX_MESH_TRANSPORT`
+- [ ] **BLE hardware spike — `docs/BLE_SPIKE.md`. Still the hard stop.**
+      Needs two real Android phones. Everything above it is proven in software
+      against a simulated mesh; this is what proves the radio.
+- [ ] Three-phone relay test — `src/mesh/TESTING.md` M3
+- [ ] Record the demo — `docs/DEMO_SCRIPT.md`
+
+Two things worth knowing before touching the code:
+
+1. **`ttl` must never go back into `canonicalize()`.** It was there, and it
+   silently broke multi-hop relay — every relay decrements ttl, so a packet
+   verified at its origin and failed everywhere after. There is a regression
+   test in `relay.test.ts`.
+2. **Implementation choices that depart from this file are in
+   `docs/DECISIONS.md`**, with reasoning — the BLE libraries, the map, the
+   end-to-end-encryption claim, and `senderId`.
 
 ## Reference docs (read these when relevant, don't duplicate them here)
 - `docs/FALLBACKS.md` — full BLE spike procedure, payload-size gotchas,

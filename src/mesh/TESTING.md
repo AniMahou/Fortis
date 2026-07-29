@@ -52,6 +52,26 @@ A BLE advertiser does not send once — it rebroadcasts the same bytes many time
 a second. The first version of the reassembler delivered every message twenty
 times; this test caught it.
 
+## Component tests
+
+There are none, deliberately.
+
+React Test Renderer is deprecated in React 19, and React Native Testing Library
+v14 did not initialise correctly against this project's RN 0.81 / React 19
+combination — `render` returned an object with no query methods. Rather than
+keep fighting the renderer, the one assertion that genuinely mattered moved to
+where it can be tested without one.
+
+`formatHopCount` is now a pure function in `state/meshModel.ts` with its own
+tests. It produces the most load-bearing string in the whole demo: a relayed
+message rendering as `DIRECT` would be wrong in the most convincing possible
+way. Testing the function rather than the component covers that properly.
+
+The rest of the UI is verified by `npm run typecheck`, by a full Metro bundle
+(`npx react-native bundle --platform android --dev false --entry-file index.js
+--bundle-output /tmp/b.js`), and by the manual checklists here and in
+`src/storage/TESTING.md`.
+
 ## What is not automated, and why
 
 `bleTransport.ts` and `src/native/VoxMesh.ts` have no unit tests. There is no
