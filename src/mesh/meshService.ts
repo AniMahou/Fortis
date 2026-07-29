@@ -355,6 +355,16 @@ export class MeshService {
     return this.transport.status;
   }
 
+  /**
+   * The active transport, for the diagnostics overlay only. Feature code must
+   * go through this service — reaching past it would put transport-specific
+   * knowledge back into the UI, which is the coupling the interface exists to
+   * prevent.
+   */
+  get activeTransport(): MeshTransport {
+    return this.transport;
+  }
+
   private emitPeers(): void {
     const peers = this.activePeers();
     this.emit(l => l.onPeersChanged?.(peers));
