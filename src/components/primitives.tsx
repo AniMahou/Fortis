@@ -19,6 +19,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import {Icon, type IconName} from './Icon';
+import {formatHopCount} from '../state/meshModel';
 import {MIN_TOUCH_TARGET, colors, elevation, radius, spacing, type} from '../theme/tokens';
 
 // ---------------------------------------------------------------- typography
@@ -224,13 +225,8 @@ export function HopBadge({
 }: {
   hopCount: number | null;
 }): React.JSX.Element | null {
-  if (hopCount === null) return null;
-  const label =
-    hopCount === 0
-      ? 'DIRECT'
-      : hopCount === 1
-        ? '1 HOP'
-        : `${hopCount} HOPS`;
+  const label = formatHopCount(hopCount);
+  if (label === null || hopCount === null) return null;
   return (
     <View style={[styles.hopBadge, hopCount > 0 && styles.hopBadgeRelayed]}>
       <Text

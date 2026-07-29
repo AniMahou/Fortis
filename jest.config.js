@@ -1,19 +1,17 @@
 /**
- * Two test projects, deliberately separated.
+ * One test project, running in plain Node with no React Native shims at all.
  *
- * `logic` runs in a plain Node environment with no React Native shims at all.
- * That is the point: mesh/crypto/storage/state are written to be free of RN
- * imports so they can be proven correct on a laptop, long before a phone is
- * involved. If a logic test ever needs an RN mock, something has leaked into
- * a layer that should not have it.
+ * That is the point rather than a limitation: mesh, crypto, storage, state and
+ * geo are written free of RN imports so they can be proven correct on a laptop,
+ * long before a phone is involved. If a test here ever needs an RN mock,
+ * something has leaked into a layer that should not have it.
  *
- * `native` runs anything that does touch React Native (the thin transport
- * bindings and screens) under the react-native preset.
+ * There are deliberately no component tests — see src/mesh/TESTING.md
+ * "Component tests" for why, and for what replaced them.
  *
- * Note there is no ts-jest here — CONTEXT.md risk #8 was a ts-jest/TypeScript
- * version mismatch. Both projects transform TypeScript with Babel instead,
- * which removes that failure mode entirely. Type checking is a separate step:
- * `npm run typecheck`.
+ * No ts-jest either: CONTEXT.md risk #8 was a ts-jest/TypeScript version
+ * mismatch, and transforming with Babel removes that failure mode rather than
+ * working around it. Type checking is a separate step: `npm run typecheck`.
  */
 
 /** @type {import('jest').Config} */
@@ -34,15 +32,6 @@ module.exports = {
       transform: {
         '^.+\\.(js|ts|tsx)$': ['babel-jest', {configFile: './babel.config.js'}],
       },
-    },
-    {
-      displayName: 'native',
-      preset: 'react-native',
-      testMatch: ['<rootDir>/src/**/__nativetests__/**/*.test.tsx'],
-      setupFiles: ['<rootDir>/jest.setup.js'],
-      transformIgnorePatterns: [
-        'node_modules/(?!(@react-native|react-native|react-native-.*|@react-navigation)/)',
-      ],
     },
   ],
   collectCoverageFrom: [

@@ -13,6 +13,7 @@ import {
   activeDangerPins,
   appendBounded,
   dangerPinFromPacket,
+  formatHopCount,
   mergeDangerPins,
   messageFromOwnPacket,
   messageFromPacket,
@@ -237,5 +238,39 @@ describe('activeDangerPins', () => {
   it('keeps a report right up to the TTL boundary', () => {
     const now = 10_000_000;
     expect(activeDangerPins([at(now - DANGER_PIN_TTL_MS + 1)], now)).toHaveLength(1);
+  });
+});
+
+describe('formatHopCount', () => {
+  // The single most load-bearing string in the demo. "2 HOPS" on a bubble is
+  // the visible proof a message travelled through somebody else's phone, and a
+  // relayed message rendering as "DIRECT" would be wrong in the most
+  // convincing possible way.
+  it.each([
+    [0, 'DIRECT'],
+    [1, '1 HOP'],
+    [2, '2 HOPS'],
+    [5, '5 HOPS'],
+    [12, '12 HOPS'],
+  ])('formats %i as "%s"', (hopCount, expected) => {
+    expect(formatHopCount(hopCount)).toBe(expected);
+  });
+
+  it('never renders "1 HOPS"', () => {
+    // Guards the singular branch. Small, but it undermines a screen whose
+    // whole job is looking precise.
+    expect(formatHopCount(1)).not.toBe('1 HOPS');
+  });
+
+  it('returns null for our own messages', () => {
+    // A broadcast mesh has no delivery receipts, so a badge on an outgoing
+    // message would claim something nobody confirmed.
+    expect(formatHopCount(null)).toBeNull();
+  });
+
+  it('treats a nonsensical negative hop count as direct', () => {
+    // Cannot happen through meshService, which clamps at zero — but a badge
+    // reading "-1 HOPS" would be a memorable thing to have on screen.
+    expect(formatHopCount(-3)).toBe('DIRECT');
   });
 });

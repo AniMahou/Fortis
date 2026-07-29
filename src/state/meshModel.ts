@@ -137,6 +137,24 @@ export function appendBounded<T extends {id: string}>(
 }
 
 /**
+ * The hop-count badge label.
+ *
+ * Lives here, as a pure function, rather than inline in the component — it is
+ * the single most load-bearing string in the demo. "2 HOPS" on a bubble is the
+ * visible proof a message travelled through somebody else's phone, and a
+ * relayed message rendering as "DIRECT" would be wrong in the most convincing
+ * possible way. Putting it here makes it testable without a renderer.
+ *
+ * Returns null for our own outgoing messages: a broadcast mesh has no delivery
+ * receipts, so any badge there would claim something nobody confirmed.
+ */
+export function formatHopCount(hopCount: number | null): string | null {
+  if (hopCount === null) return null;
+  if (hopCount <= 0) return 'DIRECT';
+  return hopCount === 1 ? '1 HOP' : `${hopCount} HOPS`;
+}
+
+/**
  * Newest report wins per location and kind.
  *
  * Without this the map accumulates a smear of pins as people re-report the
