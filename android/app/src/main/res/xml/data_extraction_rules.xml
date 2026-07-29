@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Backup and device-transfer are disabled outright.
+
+  This is a privacy decision, not an oversight. VOX's threat model is a state
+  actor who wants to identify the people using it. Letting the OS copy the
+  encrypted store and the device keypair into a cloud backup, or onto a new
+  handset during device transfer, would put that data somewhere panic wipe
+  cannot reach — which would quietly make panic wipe a lie.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </device-transfer>
+</data-extraction-rules>

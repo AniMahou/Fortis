@@ -1,6 +1,52 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <!--
+      VOX runs with no internet by design. INTERNET is declared only so the
+      Metro dev server can reach a debug build, and so the Plan B WiFi hub
+      (a purely local socket on the hotspot subnet — see docs/FALLBACKS.md)
+      can be reached. No traffic ever leaves the local network.
+    -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Bluetooth, Android 11 (API 30) and below -->
+    <uses-permission android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+
+    <!--
+      Bluetooth, Android 12 (API 31) and above.
+      BLUETOOTH_CONNECT is NOT requested: VOX never opens a GATT connection or
+      pairs with anything. It only broadcasts and listens. Asking for a
+      permission the app does not use would be a bad look for a tool whose
+      entire pitch is that it collects nothing.
+    -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
+    <!--
+      Location. Genuinely needed twice over: Android requires it to return BLE
+      scan results, and the SOS/danger-report features attach a real GPS fix.
+      COARSE is declared alongside FINE so the app degrades to a rough fix
+      rather than failing outright if the user grants only approximate
+      location.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!--
+      BLE is required, not optional: without it there is no mesh and the app
+      has nothing to offer. Declaring it required keeps VOX off devices where
+      it could not work.
+    -->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
 
     <application
       android:name=".MainApplication"
@@ -8,15 +54,19 @@
       android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
+      android:fullBackupContent="false"
+      android:dataExtractionRules="@xml/data_extraction_rules"
       android:theme="@style/AppTheme"
       android:usesCleartextTraffic="${usesCleartextTraffic}"
-      android:supportsRtl="true">
+      android:supportsRtl="true"
+      tools:targetApi="31">
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustResize"
+        android:screenOrientation="portrait"
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
