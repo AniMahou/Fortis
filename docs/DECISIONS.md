@@ -122,3 +122,63 @@ whole mesh in-process so the UI can be developed and demoed with no radio at
 all.
 
 **The spike is still a hard stop.** `docs/BLE_SPIKE.md` is the runbook.
+
+## D7 — `senderId` is the public key, not a UUID
+
+**CONTEXT.md said**: anonymous device ID via `react-native-uuid`, never a
+hardware identifier.
+
+**Problem**: a receiver has no server to look a sender's public key up from,
+and cannot verify a signature without it. So the key has to travel in the
+packet regardless. Carrying a separate UUID *as well* costs 16 bytes in every
+packet — at ~20 usable bytes per legacy BLE frame, that is a whole extra frame
+of airtime for an identifier that adds nothing.
+
+**Decision**: `senderId` is the base64 Ed25519 public key.
+
+The privacy property CONTEXT.md actually cares about is preserved exactly: it
+is random per install, is not derived from any hardware identifier, and panic
+wipe destroys it so the next launch is a new and unlinkable identity. That was
+the reason for the "never a hardware ID" rule, and this satisfies it.
+
+It also removes a class of bug. When the identifier *is* the verification key,
+there is no way to claim someone else's `senderId` while signing with your own
+— they are the same 32 bytes. There is a test for that in `wire.test.ts`.
+
+`react-native-uuid` is still a dependency and still used for what it is
+genuinely good at.
+
+## D8 — The UI does not claim end-to-end encryption
+
+**The Stitch copy said**: "End-to-End Encryption — every byte of data sent over
+the mesh network is encrypted from the moment it leaves your device."
+
+**That is not what this app does, and it cannot be.** A mesh broadcast has no
+addressee. Every phone in range receives every packet — that is precisely how
+relaying works, and it is what makes an SOS reach a stranger who can help.
+There is no recipient key to encrypt to.
+
+What VOX actually does is **sign** every packet, which gives integrity and
+authenticity: a relay cannot alter a message or forge one from someone else.
+It does not give confidentiality against anyone in radio range.
+
+**Decision**: the onboarding copy says "Signed, not secret", and spells out
+that a mesh broadcast should be treated as speaking aloud in a crowd.
+
+This is the single most consequential piece of copy in the app. Someone
+deciding whether it is safe to send a particular message from a particular
+place is relying on it being accurate. Telling them their broadcast was
+encrypted when anyone nearby can read it would be worse than telling them
+nothing — it would encourage exactly the disclosure the app should discourage.
+The data *at rest* is genuinely encrypted, and the UI says that separately.
+
+## D9 — Camera and microphone permissions are not requested
+
+The Stitch `permissions_request` screen lists Camera & Mic alongside Bluetooth,
+Location and Storage. Photos and voice notes are in CONTEXT.md's **mocked** set,
+so there is no code behind them.
+
+Asking for a permission the app cannot use would undercut the one claim the
+whole product rests on. Storage is not requested either — scoped app storage
+needs no runtime permission on modern Android. The screen says out loud what is
+*not* being asked for, which is more persuasive than the request list.
