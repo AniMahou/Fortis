@@ -1,0 +1,85 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-highest": "#e2e2e2", "error": "#ba1a1a", "error-container": "#ffdad6", "secondary-fixed": "#e3e2e2", "on-error": "#ffffff", "surface-tint": "#5f5e5e", "on-primary-container": "#858383", "surface-container-lowest": "#ffffff", "surface-container-low": "#f3f3f4", "on-tertiary-container": "#f63949", "outline": "#747878", "on-background": "#1a1c1c", "background": "#f9f9f9", "outline-variant": "#c4c7c7", "on-secondary-fixed": "#1a1c1c", "surface-container": "#eeeeee", "secondary": "#5e5e5f", "primary-fixed-dim": "#c8c6c5", "on-secondary-container": "#626363", "on-tertiary-fixed": "#410007", "primary-fixed": "#e5e2e1", "surface": "#f9f9f9", "tertiary-fixed": "#ffdad8", "on-error-container": "#93000a", "tertiary-container": "#410007", "on-primary": "#ffffff", "on-secondary-fixed-variant": "#464747", "primary": "#000000", "tertiary": "#000000", "surface-bright": "#f9f9f9", "tertiary-fixed-dim": "#ffb3b1", "surface-container-high": "#e8e8e8", "on-tertiary-fixed-variant": "#92001c", "on-tertiary": "#ffffff", "surface-variant": "#e2e2e2", "primary-container": "#1c1b1b", "inverse-on-surface": "#f0f1f1", "secondary-fixed-dim": "#c7c6c6", "secondary-container": "#e0dfdf", "on-primary-fixed": "#1c1b1b", "on-primary-fixed-variant": "#474746", "inverse-primary": "#c8c6c5", "on-secondary": "#ffffff", "surface-dim": "#dadada", "on-surface-variant": "#444748", "inverse-surface": "#2f3131", "on-surface": "#1a1c1c" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "stack-sm": "8px", "gutter": "16px", "stack-lg": "32px", "margin-mobile": "16px", "margin-desktop": "24px", "stack-md": "16px", "base-unit": "4px" }, "fontFamily": { "button": ["Inter"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "headline-lg-mobile": ["Inter"], "label-caps": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"] }, "fontSize": { "button": ["14px", {"lineHeight": "20px", "fontWeight": "600"}], "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}], "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}] } } } };</script></head><body class="bg-surface font-body-lg text-on-surface flex items-center justify-center min-h-screen"><main class="w-full flex flex-col items-center justify-center"><div class="flex flex-col w-full px-margin-mobile">
+<!-- Top Logo Section -->
+<div class="flex items-center justify-start w-full py-stack-md">
+<img alt="VOX Logo" class="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj0XeNKGPWCFY_ZE4eYMfXuxa-47syVac850JOoOz86n57sSActXXJI9Fw8mUaXscC1lY46FFa8y6y2IC-JPumdRdn_A_3yUCmsoAy8U7ZPbeUIqccng3Di6nuMmXi7LUV4ER7YeRlOfCwOQ0dvTKMtkf4hSF5nGBEWHvjDf1NIMfy5LQrTBSe1hZgQYPuZcQFJGe82xoTvhjj9wGTEUf8Y_YUmIu5ONi0c-gqW6_H6uY1-BQsI0kq"/>
+</div>
+<!-- Hero Illustration Section -->
+<div class="relative flex items-center justify-center w-full py-stack-lg overflow-hidden">
+<!-- Ambient Animated Glow -->
+<div class="absolute inset-0 flex items-center justify-center opacity-30">
+<svg fill="none" height="300" viewbox="0 0 200 200" width="300" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" fill="url(#glowGradient)" r="80">
+<animate attributename="r" dur="4s" repeatcount="indefinite" values="70;90;70"></animate>
+<animate attributename="opacity" dur="4s" repeatcount="indefinite" values="0.2;0.5;0.2"></animate>
+</circle>
+<defs>
+<radialgradient cx="0" cy="0" gradienttransform="translate(100 100) rotate(90) scale(100)" gradientunits="userSpaceOnUse" id="glowGradient" r="1">
+<stop stop-color="#B0B0B0"></stop>
+<stop offset="1" stop-color="#B0B0B0" stop-opacity="0"></stop>
+</radialgradient>
+</defs>
+</svg>
+</div>
+<!-- Mesh Network Illustration -->
+<div class="relative z-10 w-64 h-64 flex items-center justify-center">
+<svg class="w-full h-full drop-shadow-[0_0_8px_rgba(176,176,176,0.4)]" viewbox="0 0 200 200">
+<!-- Connecting Lines -->
+<line stroke="black" stroke-linecap="round" stroke-width="2" x1="100" x2="160" y1="40" y2="140">
+<animate attributename="stroke-dasharray" dur="2s" fill="freeze" from="0,200" to="200,0"></animate>
+</line>
+<line stroke="black" stroke-linecap="round" stroke-width="2" x1="160" x2="40" y1="140" y2="140">
+<animate attributename="stroke-dasharray" begin="0.5s" dur="2s" fill="freeze" from="0,200" to="200,0"></animate>
+</line>
+<line stroke="black" stroke-linecap="round" stroke-width="2" x1="40" x2="100" y1="140" y2="40">
+<animate attributename="stroke-dasharray" begin="1s" dur="2s" fill="freeze" from="0,200" to="200,0"></animate>
+</line>
+<!-- Nodes -->
+<circle cx="100" cy="40" fill="black" r="8">
+<animate attributename="r" dur="3s" repeatcount="indefinite" values="8;10;8"></animate>
+</circle>
+<circle cx="160" cy="140" fill="black" r="8">
+<animate attributename="r" begin="1s" dur="3s" repeatcount="indefinite" values="8;10;8"></animate>
+</circle>
+<circle cx="40" cy="140" fill="black" r="8">
+<animate attributename="r" begin="2s" dur="3s" repeatcount="indefinite" values="8;10;8"></animate>
+</circle>
+<!-- Pulse effect for nodes -->
+<circle cx="100" cy="40" r="8" stroke="black" stroke-opacity="0.3">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="8;20"></animate>
+<animate attributename="opacity" dur="2s" repeatcount="indefinite" values="1;0"></animate>
+</circle>
+</svg>
+</div>
+</div>
+<!-- Text Content Section -->
+<div class="flex flex-col items-center text-center space-y-stack-md mt-stack-sm">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">
+      Stay Connected.<br/>Stay Safe. Stay Informed.
+    </h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-[280px] leading-relaxed">
+      Vox works without internet—using Bluetooth mesh to keep you connected when it matters most. No personal data is ever collected.
+    </p>
+</div>
+<!-- Bottom Action Section -->
+<div class="flex flex-col items-center w-full mt-stack-lg space-y-stack-md pb-stack-lg">
+<button class="w-full bg-primary text-on-primary font-button text-button py-4 rounded-lg shadow-md transition-all active:scale-[0.98] active:bg-on-surface-variant" id="get-started-btn">
+      Get Started
+    </button>
+<a class="font-body-sm text-body-sm text-secondary hover:text-on-surface transition-colors flex items-center gap-1" href="#">
+      Learn More
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for the Get Started button
+  document.getElementById('get-started-btn')?.addEventListener('click', function() {
+    this.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Initializing...</span>';
+    
+    setTimeout(() => {
+      // Redirect or transition logic would go here
+      console.log('Transition to mesh discovery...');
+    }, 1500);
+  });
+</script></main></body></html>

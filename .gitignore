@@ -1,0 +1,53 @@
+# === Secrets / environment ===
+# .env holds the live build-time config. Never commit it — commit .env.example.
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# === Node ===
+node_modules/
+npm-debug.log
+yarn-error.log
+*.tsbuildinfo
+.npm/
+
+# === Metro / React Native ===
+.metro-health-check*
+metro-cache/
+*.jsbundle
+
+# === Android ===
+android/.gradle/
+android/.idea/
+android/build/
+android/app/build/
+android/app/release/
+android/local.properties
+android/.cxx/
+*.keystore
+!debug.keystore
+*.apk
+*.aab
+
+# === iOS (out of scope for the demo, ignored anyway) ===
+ios/build/
+ios/Pods/
+ios/*.xcworkspace/xcuserdata/
+*.xcuserstate
+
+# === Testing ===
+coverage/
+junit.xml
+
+# === Editors / OS ===
+.DS_Store
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.iml
+*.swp
+
+# === Build output ===
+dist/
+server/dist/

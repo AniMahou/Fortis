@@ -1,0 +1,98 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-highest": "#e2e2e2", "error": "#ba1a1a", "error-container": "#ffdad6", "secondary-fixed": "#e3e2e2", "on-error": "#ffffff", "surface-tint": "#5f5e5e", "on-primary-container": "#858383", "surface-container-lowest": "#ffffff", "surface-container-low": "#f3f3f4", "on-tertiary-container": "#f63949", "outline": "#747878", "on-background": "#1a1c1c", "background": "#f9f9f9", "outline-variant": "#c4c7c7", "on-secondary-fixed": "#1a1c1c", "surface-container": "#eeeeee", "secondary": "#5e5e5f", "primary-fixed-dim": "#c8c6c5", "on-secondary-container": "#626363", "on-tertiary-fixed": "#410007", "primary-fixed": "#e5e2e1", "surface": "#f9f9f9", "tertiary-fixed": "#ffdad8", "on-error-container": "#93000a", "tertiary-container": "#410007", "on-primary": "#ffffff", "on-secondary-fixed-variant": "#464747", "primary": "#000000", "tertiary": "#000000", "surface-bright": "#f9f9f9", "tertiary-fixed-dim": "#ffb3b1", "surface-container-high": "#e8e8e8", "on-tertiary-fixed-variant": "#92001c", "on-tertiary": "#ffffff", "surface-variant": "#e2e2e2", "primary-container": "#1c1b1b", "inverse-on-surface": "#f0f1f1", "secondary-fixed-dim": "#c7c6c6", "secondary-container": "#e0dfdf", "on-primary-fixed": "#1c1b1b", "on-primary-fixed-variant": "#474746", "inverse-primary": "#c8c6c5", "on-secondary": "#ffffff", "surface-dim": "#dadada", "on-surface-variant": "#444748", "inverse-surface": "#2f3131", "on-surface": "#1a1c1c" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "stack-sm": "8px", "gutter": "16px", "stack-lg": "32px", "margin-mobile": "16px", "margin-desktop": "24px", "stack-md": "16px", "base-unit": "4px" }, "fontFamily": { "button": ["Inter"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "headline-lg-mobile": ["Inter"], "label-caps": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"] }, "fontSize": { "button": ["14px", {"lineHeight": "20px", "fontWeight": "600"}], "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}], "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-lg text-on-surface flex items-center justify-center min-h-screen"><main class="w-full flex flex-col items-center justify-center"><div class="flex flex-col w-full max-w-md mx-auto px-margin-mobile">
+<!-- Success Animation & Hero Section -->
+<div class="flex flex-col items-center justify-center pt-stack-lg pb-stack-md text-center">
+<div class="relative mb-stack-md">
+<!-- Animated Background Pulse -->
+<div class="absolute inset-0 bg-primary/5 rounded-full scale-150 animate-pulse"></div>
+<!-- Core Checkmark Icon -->
+<div class="relative w-[80px] h-[80px] bg-primary rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-700 hover:scale-110">
+<span class="material-symbols-outlined text-[40px] text-[#4ADE80]" style="font-variation-settings: 'FILL' 1, 'wght' 600;">
+          check_circle
+        </span>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-stack-sm">
+      You're Ready!
+    </h1>
+<p class="font-body-lg text-body-lg text-secondary px-gutter leading-relaxed">
+      You are now connected to <span class="text-primary font-semibold">Vox</span>. You're safe, connected, and protected. Whenever the internet goes down, Vox keeps you up.
+    </p>
+</div>
+<!-- Feature Grid -->
+<div class="grid grid-cols-1 gap-stack-md w-full mb-stack-lg">
+<!-- Card 1 -->
+<div class="group flex items-start p-gutter bg-surface-container-low rounded-xl transition-all duration-300 hover:bg-surface-container-high">
+<div class="flex-shrink-0 w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center mr-stack-md">
+<span class="material-symbols-outlined text-primary">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-1">Security Standard</span>
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface">End-to-End Encryption</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Your data is yours alone. Every packet is signed and sealed.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex items-start p-gutter bg-surface-container-low rounded-xl transition-all duration-300 hover:bg-surface-container-high">
+<div class="flex-shrink-0 w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center mr-stack-md">
+<span class="material-symbols-outlined text-primary">portable_wifi_off</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-1">Network Layer</span>
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface">Offline Resilience</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Mesh technology ensures connectivity without cellular towers.</p>
+</div>
+</div>
+</div>
+<!-- Visual Delight: Connection Visualization -->
+<div class="relative w-full h-24 bg-surface-container-lowest rounded-xl overflow-hidden mb-stack-lg">
+<div class="absolute inset-0 flex items-center justify-center opacity-20">
+<svg class="stroke-primary fill-none" height="100%" viewbox="0 0 400 100" width="100%">
+<path d="M0 50 Q 50 10 100 50 T 200 50 T 300 50 T 400 50" stroke-width="1">
+<animate attributename="d" dur="5s" repeatcount="indefinite" values="M0 50 Q 50 10 100 50 T 200 50 T 300 50 T 400 50; M0 50 Q 50 90 100 50 T 200 50 T 300 50 T 400 50; M0 50 Q 50 10 100 50 T 200 50 T 300 50 T 400 50"></animate>
+</path>
+</svg>
+</div>
+<div class="relative z-10 flex items-center justify-center h-full space-x-4">
+<div class="flex items-center space-x-2">
+<div class="w-2 h-2 bg-[#4ADE80] rounded-full animate-ping"></div>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Mesh Network Active</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="w-full pb-stack-lg mt-auto">
+<button class="w-full bg-primary text-on-primary font-button text-button py-4 rounded-xl shadow-md transition-all active:scale-[0.98] hover:shadow-lg flex items-center justify-center gap-2 group" id="cta-dashboard">
+      Go to Dashboard
+      <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+  // Add a playful burst effect on button click before navigation
+  document.getElementById('cta-dashboard').addEventListener('click', function(e) {
+    const btn = e.currentTarget;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span>';
+    
+    // Simulate a brief joyful pause
+    setTimeout(() => {
+      // In a real app, this would route to the dashboard
+      console.log('Navigating to dashboard...');
+    }, 600);
+  });
+
+  // Micro-interaction: random subtle movement for the checkmark
+  const icon = document.querySelector('.relative.w-\\[80px\\]');
+  if (icon) {
+    setInterval(() => {
+      const x = (Math.random() - 0.5) * 4;
+      const y = (Math.random() - 0.5) * 4;
+      icon.style.transform = `translate(${x}px, ${y}px)`;
+    }, 3000);
+  }
+</script></main></body></html>

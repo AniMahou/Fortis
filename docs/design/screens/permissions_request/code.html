@@ -1,0 +1,148 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-highest": "#e2e2e2", "error": "#ba1a1a", "error-container": "#ffdad6", "secondary-fixed": "#e3e2e2", "on-error": "#ffffff", "surface-tint": "#5f5e5e", "on-primary-container": "#858383", "surface-container-lowest": "#ffffff", "surface-container-low": "#f3f3f4", "on-tertiary-container": "#f63949", "outline": "#747878", "on-background": "#1a1c1c", "background": "#f9f9f9", "outline-variant": "#c4c7c7", "on-secondary-fixed": "#1a1c1c", "surface-container": "#eeeeee", "secondary": "#5e5e5f", "primary-fixed-dim": "#c8c6c5", "on-secondary-container": "#626363", "on-tertiary-fixed": "#410007", "primary-fixed": "#e5e2e1", "surface": "#f9f9f9", "tertiary-fixed": "#ffdad8", "on-error-container": "#93000a", "tertiary-container": "#410007", "on-primary": "#ffffff", "on-secondary-fixed-variant": "#464747", "primary": "#000000", "tertiary": "#000000", "surface-bright": "#f9f9f9", "tertiary-fixed-dim": "#ffb3b1", "surface-container-high": "#e8e8e8", "on-tertiary-fixed-variant": "#92001c", "on-tertiary": "#ffffff", "surface-variant": "#e2e2e2", "primary-container": "#1c1b1b", "inverse-on-surface": "#f0f1f1", "secondary-fixed-dim": "#c7c6c6", "secondary-container": "#e0dfdf", "on-primary-fixed": "#1c1b1b", "on-primary-fixed-variant": "#474746", "inverse-primary": "#c8c6c5", "on-secondary": "#ffffff", "surface-dim": "#dadada", "on-surface-variant": "#444748", "inverse-surface": "#2f3131", "on-surface": "#1a1c1c" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "stack-sm": "8px", "gutter": "16px", "stack-lg": "32px", "margin-mobile": "16px", "margin-desktop": "24px", "stack-md": "16px", "base-unit": "4px" }, "fontFamily": { "button": ["Inter"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "headline-lg-mobile": ["Inter"], "label-caps": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"] }, "fontSize": { "button": ["14px", {"lineHeight": "20px", "fontWeight": "600"}], "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}], "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-lg text-on-surface flex items-center justify-center min-h-screen"><main class="w-full flex flex-col items-center justify-center"><div class="flex flex-col w-full max-w-md mx-auto px-margin-mobile">
+<!-- Header Navigation -->
+<div class="flex items-center justify-between py-stack-md">
+<button aria-label="Back" class="p-2 -ml-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</div>
+<!-- Intro Section -->
+<div class="py-stack-lg">
+<div class="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mb-stack-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-stack-sm">Vox Needs Your Permission</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">To ensure reliable communication in off-grid environments, please enable the following services.</p>
+</div>
+<!-- Permission Cards -->
+<div class="flex flex-col gap-stack-md mb-stack-lg">
+<!-- Bluetooth -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between group transition-all hover:bg-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">bluetooth</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">Bluetooth</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Connect with nearby devices</span>
+</div>
+</div>
+<button aria-checked="false" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-surface-container-highest transition-colors duration-200 focus:outline-none" onclick="toggleSwitch(this)" role="switch">
+<span class="translate-x-1 inline-block h-4 w-4 transform rounded-full bg-white transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Location -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between group transition-all hover:bg-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">location_on</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">Location</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">SOS and danger zone alerts</span>
+</div>
+</div>
+<button aria-checked="false" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-surface-container-highest transition-colors duration-200 focus:outline-none" onclick="toggleSwitch(this)" role="switch">
+<span class="translate-x-1 inline-block h-4 w-4 transform rounded-full bg-white transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Storage -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between group transition-all hover:bg-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">database</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">Storage</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Save messages locally</span>
+</div>
+</div>
+<button aria-checked="false" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-surface-container-highest transition-colors duration-200 focus:outline-none" onclick="toggleSwitch(this)" role="switch">
+<span class="translate-x-1 inline-block h-4 w-4 transform rounded-full bg-white transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<!-- Camera & Mic -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between group transition-all hover:bg-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">videocam</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface">Camera &amp; Mic</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Capture photos and voice notes</span>
+</div>
+</div>
+<button aria-checked="false" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-surface-container-highest transition-colors duration-200 focus:outline-none" onclick="toggleSwitch(this)" role="switch">
+<span class="translate-x-1 inline-block h-4 w-4 transform rounded-full bg-white transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+<!-- Warning State (Initially Hidden) -->
+<div class="hidden mb-stack-md flex items-center gap-2 p-3 bg-error-container rounded-lg" id="permission-warning">
+<span class="material-symbols-outlined text-on-error-container text-sm">warning</span>
+<span class="font-body-sm text-body-sm text-on-error-container">Some features will be limited without full access.</span>
+</div>
+<!-- Actions -->
+<div class="mt-auto flex flex-col items-center gap-stack-md pb-stack-lg">
+<button class="w-full h-14 bg-primary text-on-primary font-button text-button rounded-xl shadow-md active:scale-[0.98] transition-transform" id="allow-all-btn" onclick="allowAll()">
+      Allow All
+    </button>
+<button class="font-button text-button text-on-surface-variant hover:text-on-surface transition-colors">
+      Continue Anyway
+    </button>
+</div>
+<script>
+    function toggleSwitch(el) {
+      const isChecked = el.getAttribute('aria-checked') === 'true';
+      const dot = el.querySelector('span');
+      
+      if (isChecked) {
+        el.setAttribute('aria-checked', 'false');
+        el.classList.replace('bg-primary', 'bg-surface-container-highest');
+        dot.classList.replace('translate-x-6', 'translate-x-1');
+        checkWarningVisibility();
+      } else {
+        el.setAttribute('aria-checked', 'true');
+        el.classList.replace('bg-surface-container-highest', 'bg-primary');
+        dot.classList.replace('translate-x-1', 'translate-x-6');
+        checkWarningVisibility();
+      }
+    }
+
+    function allowAll() {
+      const switches = document.querySelectorAll('[role="switch"]');
+      switches.forEach(el => {
+        if (el.getAttribute('aria-checked') === 'false') {
+          toggleSwitch(el);
+        }
+      });
+      
+      const btn = document.getElementById('allow-all-btn');
+      btn.innerText = 'Setting up...';
+      btn.classList.add('opacity-80');
+    }
+
+    function checkWarningVisibility() {
+      const switches = Array.from(document.querySelectorAll('[role="switch"]'));
+      const anyOff = switches.some(el => el.getAttribute('aria-checked') === 'false');
+      const warning = document.getElementById('permission-warning');
+      
+      if (anyOff) {
+        warning.classList.remove('hidden');
+      } else {
+        warning.classList.add('hidden');
+      }
+    }
+  </script>
+</div></main></body></html>

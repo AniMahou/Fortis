@@ -1,0 +1,100 @@
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-highest": "#e2e2e2", "error": "#ba1a1a", "error-container": "#ffdad6", "secondary-fixed": "#e3e2e2", "on-error": "#ffffff", "surface-tint": "#5f5e5e", "on-primary-container": "#858383", "surface-container-lowest": "#ffffff", "surface-container-low": "#f3f3f4", "on-tertiary-container": "#f63949", "outline": "#747878", "on-background": "#1a1c1c", "background": "#f9f9f9", "outline-variant": "#c4c7c7", "on-secondary-fixed": "#1a1c1c", "surface-container": "#eeeeee", "secondary": "#5e5e5f", "primary-fixed-dim": "#c8c6c5", "on-secondary-container": "#626363", "on-tertiary-fixed": "#410007", "primary-fixed": "#e5e2e1", "surface": "#f9f9f9", "tertiary-fixed": "#ffdad8", "on-error-container": "#93000a", "tertiary-container": "#410007", "on-primary": "#ffffff", "on-secondary-fixed-variant": "#464747", "primary": "#000000", "tertiary": "#000000", "surface-bright": "#f9f9f9", "tertiary-fixed-dim": "#ffb3b1", "surface-container-high": "#e8e8e8", "on-tertiary-fixed-variant": "#92001c", "on-tertiary": "#ffffff", "surface-variant": "#e2e2e2", "primary-container": "#1c1b1b", "inverse-on-surface": "#f0f1f1", "secondary-fixed-dim": "#c7c6c6", "secondary-container": "#e0dfdf", "on-primary-fixed": "#1c1b1b", "on-primary-fixed-variant": "#474746", "inverse-primary": "#c8c6c5", "on-secondary": "#ffffff", "surface-dim": "#dadada", "on-surface-variant": "#444748", "inverse-surface": "#2f3131", "on-surface": "#1a1c1c" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "stack-sm": "8px", "gutter": "16px", "stack-lg": "32px", "margin-mobile": "16px", "margin-desktop": "24px", "stack-md": "16px", "base-unit": "4px" }, "fontFamily": { "button": ["Inter"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "headline-lg-mobile": ["Inter"], "label-caps": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"] }, "fontSize": { "button": ["14px", {"lineHeight": "20px", "fontWeight": "600"}], "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}], "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}], "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}], "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-lg text-on-surface flex items-center justify-center min-h-screen"><main class="w-full flex flex-col items-center justify-center"><div class="flex flex-col w-full px-margin-mobile">
+<!-- Header & Progress -->
+<div class="flex items-center justify-between py-stack-md">
+<button class="flex items-center justify-center w-10 h-10 -ml-2 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</div>
+<!-- Avatar Section -->
+<div class="flex flex-col items-center justify-center mt-stack-lg space-y-stack-md">
+<div class="relative group cursor-pointer">
+<div class="w-[80px] h-[80px] rounded-full bg-surface-container flex items-center justify-center overflow-hidden ring-1 ring-primary shadow-sm transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[48px] text-secondary">person</span>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-on-primary rounded-full p-1 shadow-md">
+<span class="material-symbols-outlined text-[16px]">add_a_photo</span>
+</div>
+</div>
+<div class="text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Choose Your Temporary Nickname</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 px-8">This is how you'll appear to others on the local mesh network.</p>
+</div>
+</div>
+<!-- Input Section -->
+<div class="mt-stack-lg space-y-stack-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider ml-1" for="nickname">Nickname</label>
+<div class="relative group">
+<input class="w-full h-12 px-4 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-lg text-body-lg text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-outline-variant" id="nickname" maxlength="20" placeholder="e.g., Citizen-7X9 or Rahim" type="text"/>
+<div class="absolute right-4 top-3.5 font-body-sm text-body-sm text-outline-variant hidden" id="char-count">0/20</div>
+</div>
+<div class="flex items-center gap-2 ml-1">
+<span class="material-symbols-outlined text-[14px] text-outline">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">You can change this anytime.</p>
+</div>
+</div>
+<!-- Empty State / Visual Hint -->
+<div class="mt-stack-lg p-stack-md bg-surface-container-low rounded-xl flex items-start gap-stack-md animate-pulse" id="hint-box">
+<div class="bg-surface-container-highest p-2 rounded-full">
+<span class="material-symbols-outlined text-secondary">security</span>
+</div>
+<div class="flex flex-col">
+<p class="font-label-caps text-label-caps text-secondary">Privacy Tip</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">Avoid using your real full name if you're in a public zone. Numbers and handles work best.</p>
+</div>
+</div>
+<!-- Bottom Action -->
+<div class="mt-stack-lg mb-8">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-button text-button shadow-md active:scale-[0.98] transition-all disabled:opacity-50 disabled:grayscale" disabled="" id="continue-btn">
+      Continue
+    </button>
+</div>
+<script>
+    const input = document.getElementById('nickname');
+    const btn = document.getElementById('continue-btn');
+    const charCount = document.getElementById('char-count');
+    const hintBox = document.getElementById('hint-box');
+
+    input.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      
+      // Update UI feedback
+      if (val.length > 0) {
+        btn.disabled = false;
+        charCount.classList.remove('hidden');
+        charCount.textContent = `${val.length}/20`;
+        hintBox.classList.remove('animate-pulse');
+      } else {
+        btn.disabled = true;
+        charCount.classList.add('hidden');
+      }
+    });
+
+    // Simple interaction for the avatar
+    const avatar = document.querySelector('.group.cursor-pointer');
+    avatar.addEventListener('click', () => {
+      // Simulate "flash" effect on click
+      avatar.style.opacity = '0.7';
+      setTimeout(() => avatar.style.opacity = '1', 100);
+    });
+
+    btn.addEventListener('click', () => {
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span>';
+      setTimeout(() => {
+        btn.innerHTML = 'Nickname Saved';
+        btn.classList.replace('bg-primary', 'bg-secondary');
+      }, 800);
+    });
+  </script>
+</div></main></body></html>
