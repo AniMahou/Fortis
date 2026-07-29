@@ -28,6 +28,7 @@ module.exports = {
         '<rootDir>/src/storage/__tests__/**/*.test.ts',
         '<rootDir>/src/state/__tests__/**/*.test.ts',
         '<rootDir>/src/config/__tests__/**/*.test.ts',
+        '<rootDir>/src/geo/__tests__/**/*.test.ts',
         '<rootDir>/server/__tests__/**/*.test.js',
       ],
       transform: {
