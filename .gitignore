@@ -24,7 +24,10 @@ android/build/
 android/app/build/
 android/app/release/
 android/local.properties
+# NDK/CMake build output — appears under both paths depending on module.
 android/.cxx/
+android/app/.cxx/
+**/.cxx/
 *.keystore
 !debug.keystore
 *.apk

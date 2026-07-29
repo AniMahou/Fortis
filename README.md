@@ -79,21 +79,25 @@ in the middle can drop or replay packets, but cannot forge one.
 | Type check | clean |
 | Lint | clean |
 | Metro bundle | builds (1.7 MB Android) |
+| **Android APK** | **builds — `assembleDebug` succeeds, all three Kotlin modules in the dex** |
 | Plan B hub | verified end to end, two live WebSocket clients |
 | **BLE on real hardware** | **not yet verified — this is the open item** |
 
 Everything above the radio is proven in software against a simulated mesh,
-including the multi-hop relay. What has never run is the Kotlin BLE module, on
-an actual phone. That is CONTEXT.md's Phase 1 hard stop and it needs two
-Android handsets in one room: **`docs/BLE_SPIKE.md`**.
+including the multi-hop relay, and the app compiles to an installable APK with
+the native modules present. What has never run is the BLE radio itself. That is
+CONTEXT.md's Phase 1 hard stop and it needs two Android handsets in one room:
+**`docs/BLE_SPIKE.md`**.
 
 If the spike fails, Plan B is one line in `.env` and no code changes.
 
 ## Setup
 
-Requires Node ≥ 20, JDK 17, and Android Studio with the Android SDK.
-Android only — iOS background BLE restrictions are out of scope, see
-`CONTEXT.md` Section 9.
+Requires Node ≥ 20, JDK 17, and Android Studio with the Android SDK. Gradle
+installs the NDK and CMake itself on first build. Android only; iOS background
+BLE restrictions are out of scope, see `CONTEXT.md` Section 9.
+
+**Full step-by-step, including the emulator route and the traps: `docs/RUNNING.md`.**
 
 ```bash
 npm install
@@ -154,6 +158,7 @@ a development machine.
 
 | File | What's in it |
 |---|---|
+| `docs/RUNNING.md` | **How to actually run it** — test suite, emulator, real phones, troubleshooting |
 | `CONTEXT.md` | Full project context — hackathon, history, scope reasoning, risks |
 | `CLAUDE.md` | Condensed index of the above, auto-loaded by Claude Code |
 | `docs/DECISIONS.md` | Implementation choices that depart from CONTEXT.md, and why |
