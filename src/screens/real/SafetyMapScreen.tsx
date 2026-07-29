@@ -102,9 +102,14 @@ export function SafetyMapScreen(): React.JSX.Element {
     void locate(false);
   }, [locate]);
 
-  const origin = position
-    ? {lat: position.latitude, lng: position.longitude}
-    : null;
+  // Memoised because a fresh object literal here would be a new reference on
+  // every render, which would defeat both useMemos below it — the haversine
+  // sort would re-run on every frame while the radar animates.
+  const origin = useMemo(
+    () =>
+      position ? {lat: position.latitude, lng: position.longitude} : null,
+    [position],
+  );
 
   const range = useMemo(
     () => (origin ? autoRange(origin, pins) : 500),

@@ -70,6 +70,25 @@ unlinkable identity.
 verified against the sender's public key, not the relay's — so a hostile node
 in the middle can drop or replay packets, but cannot forge one.
 
+## State of the build
+
+| | |
+|---|---|
+| Tests | **320 passing** |
+| Coverage | **93% statements** over the hardware-independent core |
+| Type check | clean |
+| Lint | clean |
+| Metro bundle | builds (1.7 MB Android) |
+| Plan B hub | verified end to end, two live WebSocket clients |
+| **BLE on real hardware** | **not yet verified — this is the open item** |
+
+Everything above the radio is proven in software against a simulated mesh,
+including the multi-hop relay. What has never run is the Kotlin BLE module, on
+an actual phone. That is CONTEXT.md's Phase 1 hard stop and it needs two
+Android handsets in one room: **`docs/BLE_SPIKE.md`**.
+
+If the spike fails, Plan B is one line in `.env` and no code changes.
+
 ## Setup
 
 Requires Node ≥ 20, JDK 17, and Android Studio with the Android SDK.
@@ -102,6 +121,10 @@ npm run test:coverage
 
 ```bash
 npm run typecheck
+```
+
+```bash
+npm run lint
 ```
 
 ```bash

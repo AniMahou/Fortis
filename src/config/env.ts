@@ -15,7 +15,6 @@ const result = parseConfig(Config as Record<string, string | undefined>);
 // silently changing how the mesh behaves is exactly the kind of thing that
 // wastes an afternoon of debugging on demo day.
 if (result.warnings.length > 0) {
-  // eslint-disable-next-line no-console
   console.warn(
     `[vox] .env problems (using defaults for these):\n  ` +
       result.warnings.join('\n  '),
