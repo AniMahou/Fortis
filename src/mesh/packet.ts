@@ -39,6 +39,19 @@ interface CreatePacketParams {
  * key insertion order. This is what gets signed, and what a receiver
  * re-derives to verify the signature — so it must never depend on `Date.now()`
  * or object key order.
+ *
+ * **`ttl` is deliberately excluded.** It is the one field every relaying node
+ * mutates: `decrementTtl` changes it on every hop. Including it in the signed
+ * form meant a packet verified at its origin and then failed verification at
+ * every node after the first, so nothing could ever travel more than one hop —
+ * which would have quietly reduced a mesh to a broadcast. A signature can only
+ * cover fields that do not change in flight, which is the same reason IP
+ * checksums and IPsec both exclude the TTL/hop-limit field.
+ *
+ * The trade-off: a hostile relay can raise a packet's ttl and make it live
+ * longer than its sender intended. That is bounded by receivers clamping
+ * incoming ttl to their own configured maximum (see `meshService.ts`), and it
+ * is a far smaller problem than multi-hop relay not working at all.
  */
 export function canonicalize(packet: UnsignedPacket): string {
   const ordered = {
@@ -46,7 +59,6 @@ export function canonicalize(packet: UnsignedPacket): string {
     payload: sortKeysDeep(packet.payload),
     senderId: packet.senderId,
     timestamp: packet.timestamp,
-    ttl: packet.ttl,
     type: packet.type,
   };
   return JSON.stringify(ordered);

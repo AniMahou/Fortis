@@ -92,6 +92,36 @@ describe('canonicalize', () => {
     const original = canonicalize(base);
     expect(changed).not.toBe(original);
   });
+
+  it('ignores ttl, because every relay mutates it', () => {
+    // Without this, a packet verifies at its origin and fails everywhere
+    // after the first hop — see the regression test in relay.test.ts.
+    const base = {
+      id: 'x',
+      type: 'text' as const,
+      senderId: 's',
+      ttl: 5,
+      timestamp: 1,
+      payload: { message: 'a' },
+    };
+    expect(canonicalize({ ...base, ttl: 1 })).toBe(canonicalize(base));
+  });
+
+  it('still distinguishes every immutable field', () => {
+    const base = {
+      id: 'x',
+      type: 'text' as const,
+      senderId: 's',
+      ttl: 3,
+      timestamp: 1,
+      payload: { message: 'a' },
+    };
+    const original = canonicalize(base);
+    expect(canonicalize({ ...base, id: 'y' })).not.toBe(original);
+    expect(canonicalize({ ...base, senderId: 't' })).not.toBe(original);
+    expect(canonicalize({ ...base, timestamp: 2 })).not.toBe(original);
+    expect(canonicalize({ ...base, type: 'sos' })).not.toBe(original);
+  });
 });
 
 describe('decrementTtl / isExpired', () => {

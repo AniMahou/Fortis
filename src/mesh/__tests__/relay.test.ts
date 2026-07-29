@@ -1,5 +1,8 @@
+import nacl from 'tweetnacl';
+import { encodeBase64 } from 'tweetnacl-util';
+import { sign, verify } from '../../crypto/sign';
 import { RelayState } from '../relay';
-import { createPacket } from '../packet';
+import { MAX_TTL, canonicalize, createPacket } from '../packet';
 
 const fakeSign = (data: string) => `SIG(${data.length})`;
 
@@ -88,5 +91,54 @@ describe('RelayState.handleIncoming', () => {
     state.handleIncoming(makePacket('pkt-a', 3)); // duplicate of the first
 
     expect(state.seenCount).toBe(2);
+  });
+});
+
+describe('signatures survive relaying', () => {
+  // Regression test for a bug that made multi-hop relay impossible.
+  //
+  // `canonicalize` used to include `ttl`, and `decrementTtl` changes `ttl` on
+  // every hop — so a packet verified at its origin and then failed
+  // verification at every node after the first. The mesh would have silently
+  // degraded to a single-hop broadcast, and the demo's headline feature (a
+  // message hopping with a visible hop count) could never have shown more
+  // than one hop.
+  //
+  // If this fails, check whether `ttl` has crept back into `canonicalize`.
+  it('a packet still verifies after being relayed the full TTL', () => {
+    const keyPair = nacl.sign.keyPair();
+    const senderId = encodeBase64(keyPair.publicKey);
+
+    let current = createPacket({
+      type: 'text',
+      senderId,
+      payload: { text: 'medical camp at gate 3' },
+      sign: canonical => sign(canonical, keyPair.secretKey),
+      id: 'hop-test',
+      ttl: MAX_TTL,
+      timestamp: 1_722_268_800_000,
+    });
+
+    const verifyPacket = (packet: typeof current) => {
+      const { signature, ...unsigned } = packet;
+      return verify(canonicalize(unsigned), signature, keyPair.publicKey);
+    };
+
+    expect(verifyPacket(current)).toBe(true);
+
+    // Walk it across a chain of relays, each a fresh node with its own state.
+    let hops = 0;
+    for (let node = 0; node < MAX_TTL + 2; node++) {
+      const decision = new RelayState().handleIncoming(current);
+      expect(decision.shouldDisplay).toBe(true);
+      if (!decision.shouldRebroadcast || !decision.packetToSend) break;
+      current = decision.packetToSend;
+      hops++;
+      expect(verifyPacket(current)).toBe(true);
+    }
+
+    // It travelled, and it was still verifiable the whole way.
+    expect(hops).toBe(MAX_TTL - 1);
+    expect(verifyPacket(current)).toBe(true);
   });
 });
